@@ -7,17 +7,6 @@ on:
     branches: [master]
 
 jobs:
-  build-linux:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install -y libncurses-dev
-
-      - name: Build
-        run: autoreconf -i && ./configure && make
-
   build-windows:
     runs-on: windows-latest
     defaults:
@@ -57,40 +46,3 @@ jobs:
           name: rogueclone2s-${{ steps.version.outputs.version }}-windows-x86_64
           path: dist/
 
-  build-freebsd:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Build on FreeBSD
-        uses: vmactions/freebsd-vm@4807432c7cab1c3f97688665332c0b932062d31f # v1.4.3
-        with:
-          usesh: true
-          prepare: pkg install -y autoconf automake
-          run: autoreconf -i && ./configure && make
-
-  build-haiku:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Get version
-        id: version
-        run: echo "version=$(sed -n 's/^AC_INIT(\[rogueclone2s\],\[\([^]]*\)\].*/\1/p' configure.ac)" >> "$GITHUB_OUTPUT"
-
-      - name: Build on Haiku
-        uses: cross-platform-actions/action@492b0c80085400348c599edace11141a4ee73524 # v0.32.0
-        with:
-          operating_system: haiku
-          version: "r1beta5"
-          run: |
-            pkgman install -y ncurses6_devel autoconf automake make cmd:gcc
-            autoreconf -i && ./configure && make
-            mkdir -p dist
-            cp src/rogue dist/
-            cp msg/mesg msg/mesg_E dist/
-
-      - uses: actions/upload-artifact@v7
-        with:
-          name: rogueclone2s-${{ steps.version.outputs.version }}-haiku-x86_64
-          path: dist/
