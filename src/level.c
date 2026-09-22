@@ -703,7 +703,7 @@ drop_check(void)
 			message(mesg[48], 0);
 			return 0;
 		}
-		message("going down!", 0);
+		new_level_message = "going down!";
 		return 1;
 	}
 	message(mesg[49], 0);
