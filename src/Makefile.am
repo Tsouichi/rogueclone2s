@@ -22,6 +22,7 @@ rogue_SOURCES = \
 	room.c room.h \
 	save.c save.h \
 	score.c score.h \
+    sound.c sound.h \
 	spechit.c spechit.h \
 	throw.c throw.h \
 	trap.c trap.h \
