@@ -4,5 +4,5 @@
 
 void rogue_sound_stairs(void)
 {
-    PlaySound("sound\\stairs.wav", NULL, SND_FILENAME);
+    PlaySound("sound\\stairs.wav", NULL, SND_FILENAME | SND_ASYNC);
 }
