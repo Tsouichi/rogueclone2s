@@ -30,6 +30,7 @@ AS_CASE([$host_os],
   [AC_CHECK_LIB([ncursesw], [initscr])])
 AC_CHECK_LIB([tinfow], [cbreak], [], [AC_CHECK_LIB([tinfo], [cbreak])])
 AC_CHECK_LIB([kernel32], [_sleep])
+AC_CHECK_LIB([winmm], [PlaySoundA])
 
 # MSYS2/MINGW64: curses.h が ncursesw/ サブディレクトリにあるため
 # ncursesw6-config でインクルードパスを取得
