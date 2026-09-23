@@ -27,6 +27,7 @@
 #include "rogue.h"
 #include "room.h"
 #include "score.h"
+#include "sound.h"
 
 #define swap(x, y)     \
 	{              \
@@ -704,6 +705,7 @@ drop_check(void)
 			return 0;
 		}
 		new_level_message = "going down!";
+		rogue_sound_stairs();
 		return 1;
 	}
 	message(mesg[49], 0);
