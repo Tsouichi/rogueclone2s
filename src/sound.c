@@ -1,8 +1,11 @@
 #include <windows.h>
 #include <mmsystem.h>
+#include <stdio.h>
 #include "sound.h"
 
-void rogue_sound_stairs(void)
+void rogue_sound(const char *name)
 {
-    PlaySound("sound\\stairs.wav", NULL, SND_FILENAME | SND_ASYNC);
+    char path[64];
+    snprintf(path, sizeof(path), "sound\\%s.wav", name);
+    PlaySound(path, NULL, SND_FILENAME | SND_ASYNC);
 }
