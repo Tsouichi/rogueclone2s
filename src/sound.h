@@ -1,1 +1,1 @@
-void rogue_sound_stairs(void);
+void rogue_sound(const char *name);
