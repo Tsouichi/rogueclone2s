@@ -705,7 +705,7 @@ drop_check(void)
 			return 0;
 		}
 		new_level_message = "going down!";
-		rogue_sound_stairs();
+		rogue_sound("stairs");
 		return 1;
 	}
 	message(mesg[49], 0);
