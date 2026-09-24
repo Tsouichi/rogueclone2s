@@ -169,6 +169,7 @@ rogue_hit(object *monster, bool force_hit)
 					    0;
 				}
 			}
+			rogue_sound("player_hit");
 		}
 	RET:
 		check_gold_seeker(monster);
