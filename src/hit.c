@@ -29,6 +29,7 @@
 #include "rogue.h"
 #include "room.h"
 #include "score.h"
+#include "sound.h"
 #include "spechit.h"
 
 extern utf8_int8_t *nick_name;
@@ -151,6 +152,7 @@ rogue_hit(object *monster, bool force_hit)
 					    0;
 				}
 			}
+			rogue_sound("player_miss");
 			goto RET;
 		}
 		damage = get_weapon_damage(rogue.weapon);
